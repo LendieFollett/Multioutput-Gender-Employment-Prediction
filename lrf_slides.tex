@@ -91,7 +91,7 @@
 
 \subsection{Binary/Continuous} 
 
-\begin{frame}{Predicting Individual Y* }
+\begin{frame}{Predicting Individual $Y^*$ }
 \includegraphics[width = .9\linewidth]{continuous_sim_results_ind_y.pdf}
 \end{frame}
 
@@ -99,6 +99,36 @@
 \includegraphics[width = .9\linewidth]{continuous_sim_results_ind_delta.pdf}
 \end{frame}
 
+
+\begin{frame}{Predicting $E(Y^* \mid \delta^*)$ }
+\includegraphics[width = .9\linewidth]{continuous_sim_results.pdf}
+\end{frame}
+
+\begin{frame}{Predicting $E(Y^* \mid \delta^*)$ }
+
+% latex table generated in R 4.0.5 by xtable 1.8-4 package
+% Tue Mar  1 10:17:05 2022
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrr}
+  \hline
+delta & variable & MSE & L\_bound & U\_bound \\ 
+  \hline
+0 & BART & 0.004875 & 0.000004 & 0.023207 \\ 
+  0 & Shared Forest & 0.004330 & 0.000007 & 0.017697 \\ 
+  1 & BART & 0.028464 & 0.000042 & 0.119264 \\ 
+  1 & Shared Forest & 0.010399 & 0.000011 & 0.041591 \\ 
+   \hline
+\end{tabular}
+\caption{\label{tab:mse} Mean of the squared errors (across simulations) comparing the true $E(Y^* \mid \delta^*)$ to the estimated $\hat{E}(Y^* \mid \hat{\delta})$.}
+\end{table}
+
+\end{frame}
+
 \subsection{Binary/Binary} 
+
+\begin{frame}{Predicting $E(\delta_2^* \mid \delta_1^*)$ }
+\includegraphics[width = .9\linewidth]{binary_sim_results.pdf}
+\end{frame}
 
 \end{document}

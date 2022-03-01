@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 10:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 10:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -889,43 +889,69 @@ Dictionary: translator-theorem-dictionary, Language: English
 
 {/Users/000766412/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 ]
-<continuous_sim_results_ind_y.pdf, id=57, 497.86pt x 381.425pt>
+<continuous_sim_results_ind_y.pdf, id=61, 497.86pt x 381.425pt>
 File: continuous_sim_results_ind_y.pdf Graphic file (type pdf)
 <use continuous_sim_results_ind_y.pdf>
 Package pdftex.def Info: continuous_sim_results_ind_y.pdf  used on input line 9
 6.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 96.
 
+
+(/Users/000766412/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 96.
+
+
+(/Users/000766412/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 Overfull \vbox (6.95067pt too high) detected at line 96
  []
 
 [2
 
  <./continuous_sim_results_ind_y.pdf>]
-<continuous_sim_results_ind_delta.pdf, id=91, 497.86pt x 381.425pt>
+<continuous_sim_results_ind_delta.pdf, id=99, 497.86pt x 381.425pt>
 File: continuous_sim_results_ind_delta.pdf Graphic file (type pdf)
 <use continuous_sim_results_ind_delta.pdf>
 Package pdftex.def Info: continuous_sim_results_ind_delta.pdf  used on input li
 ne 100.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 100
-.
 
-(/Users/000766412/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 100
-.
-
-(/Users/000766412/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 Overfull \vbox (6.95067pt too high) detected at line 100
  []
 
 [3
 
  <./continuous_sim_results_ind_delta.pdf>]
+<continuous_sim_results.pdf, id=136, 497.86pt x 381.425pt>
+File: continuous_sim_results.pdf Graphic file (type pdf)
+<use continuous_sim_results.pdf>
+Package pdftex.def Info: continuous_sim_results.pdf  used on input line 105.
+(pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
+
+Overfull \vbox (6.95067pt too high) detected at line 105
+ []
+
+[4
+
+ <./continuous_sim_results.pdf>] [5
+
+]
+<binary_sim_results.pdf, id=200, 662.475pt x 498.86375pt>
+File: binary_sim_results.pdf Graphic file (type pdf)
+<use binary_sim_results.pdf>
+Package pdftex.def Info: binary_sim_results.pdf  used on input line 132.
+(pdftex.def)             Requested size: 308.06367pt x 231.97685pt.
+
+Overfull \vbox (2.90627pt too high) detected at line 132
+ []
+
+[6
+
+ <./binary_sim_results.pdf>]
 \tf@nav=\write6
 \openout6 = `lrf_slides.nav'.
 
@@ -937,25 +963,30 @@ Overfull \vbox (6.95067pt too high) detected at line 100
 
  (./lrf_slides.aux)
 Package rerunfilecheck Info: File `lrf_slides.out' has not changed.
-(rerunfilecheck)             Checksum: 2E4D970E692701809718C7149266C3EF;472.
+(rerunfilecheck)             Checksum: 0A040D1A522046052B286B3BA075F2EE;594.
  ) 
 Here is how much of TeX's memory you used:
- 20171 strings out of 480450
- 380393 string characters out of 5896870
- 665117 words of memory out of 5000000
- 37460 multiletter control sequences out of 15000+600000
- 408914 words of font info for 47 fonts, out of 8000000 for 9000
+ 20257 strings out of 480450
+ 381898 string characters out of 5896870
+ 667157 words of memory out of 5000000
+ 37529 multiletter control sequences out of 15000+600000
+ 415316 words of font info for 71 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,15n,108p,414b,552s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi12.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss12.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmss8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb>
-Output written on lrf_slides.pdf (3 pages, 65119 bytes).
+mmi10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmss10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmss12.pfb></Users/000766412/Library/TinyTeX/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss8.pfb></Users/000766412/Library/TinyTeX/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></Users/000766412/Library/Tin
+yTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></Users/000766412/Li
+brary/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/0007
+66412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on lrf_slides.pdf (6 pages, 155173 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 10 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 18 named destinations out of 1000 (max. 500000)
+ 95 words of extra memory for PDF output out of 10000 (max. 10000000)
 

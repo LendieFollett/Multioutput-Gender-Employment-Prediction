@@ -196,7 +196,7 @@ rbind(data.frame(fitmatd_long0, delta = 0),
   summarise(MSE = mean((true_y - value)^2),
             L_bound = quantile((true_y - value)^2, .025),
             U_bound = quantile((true_y - value)^2, 0.975)) %>%
-  xtable
+  xtable(digits = 6) %>% print(include.rownames=FALSE)
 
 
 rbind(data.frame(fitmatd_long0, delta = 0),

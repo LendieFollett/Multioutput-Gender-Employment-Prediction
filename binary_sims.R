@@ -173,12 +173,12 @@ write.csv(fitmatd, paste0(out, "/binary_sims.csv"), row.names=FALSE)
 # Read in results
 fitmatd <- read.csv(paste0(out, "/binary_sims.csv"))
 fitmatd_long0 <- fitmatd[,c(1,3,5,7)] %>% melt(id.vars = c(1)) %>%
-  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_0","b_d2_pred_d1_0","sb_d2_pred_d1_0"),
-                           labels = c("Random Forest", "BART", "Shared Forest")))
+  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_0","b_d2_pred_d1_0","sb_d2_pred_d1_0")[c(3,2,1)],
+                           labels = c("Random Forest", "BART", "Shared Forest")[c(3,2,1)]))
 
 fitmatd_long1 <- fitmatd[,c(2,4,6,8)] %>% melt(id.vars = c(1))%>%
-  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_1","b_d2_pred_d1_1","sb_d2_pred_d1_1"),
-                           labels = c("Random Forest", "BART", "Shared Forest")))
+  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_1","b_d2_pred_d1_1","sb_d2_pred_d1_1")[c(3,2,1)],
+                           labels = c("Random Forest", "BART", "Shared Forest")[c(3,2,1)]))
 
 fitmatd_long0 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_0 - value)^2))
 fitmatd_long1 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_1 - value)^2))
