@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 13:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 13:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,21 +949,21 @@ Overfull \vbox (6.95067pt too high) detected at line 162
 
 ] [9
 
+] [10
+
 ]
-<binary_sim_results.pdf, id=313, 662.475pt x 498.86375pt>
+<binary_sim_results.pdf, id=338, 662.475pt x 498.86375pt>
 File: binary_sim_results.pdf Graphic file (type pdf)
 <use binary_sim_results.pdf>
-Package pdftex.def Info: binary_sim_results.pdf  used on input line 201.
+Package pdftex.def Info: binary_sim_results.pdf  used on input line 212.
 (pdftex.def)             Requested size: 308.06367pt x 231.97685pt.
 
-Overfull \vbox (2.90627pt too high) detected at line 201
+Overfull \vbox (2.90627pt too high) detected at line 212
  []
 
-[10
+[11
 
- <./binary_sim_results.pdf>] [11
-
-]
+ <./binary_sim_results.pdf>]
 \tf@nav=\write6
 \openout6 = `lrf_slides.nav'.
 
@@ -1000,7 +1000,7 @@ pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy7.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msam10.pfb>
-Output written on lrf_slides.pdf (11 pages, 208437 bytes).
+Output written on lrf_slides.pdf (11 pages, 208742 bytes).
 PDF statistics:
  436 PDF objects out of 1000 (max. 8388607)
  377 compressed objects within 4 object streams
