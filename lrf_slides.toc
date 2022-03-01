@@ -1,4 +1,4 @@
 \beamer@sectionintoc {1}{Multi-Output Prediction Model}{1}{0}{1}
-\beamer@sectionintoc {2}{Simulation Results}{3}{0}{2}
+\beamer@sectionintoc {2}{Simulation Study}{3}{0}{2}
 \beamer@subsectionintoc {2}{1}{Binary/Continuous}{3}{0}{2}
-\beamer@subsectionintoc {2}{2}{Binary/Binary}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Binary/Binary}{10}{0}{2}

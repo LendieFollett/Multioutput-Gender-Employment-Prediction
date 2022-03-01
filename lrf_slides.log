@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 13:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -907,61 +907,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [4
 
+] [5
+
 ]
-<continuous_sim_results_ind_y.pdf, id=152, 497.86pt x 381.425pt>
+<continuous_sim_results_ind_y.pdf, id=180, 497.86pt x 381.425pt>
 File: continuous_sim_results_ind_y.pdf Graphic file (type pdf)
 <use continuous_sim_results_ind_y.pdf>
 Package pdftex.def Info: continuous_sim_results_ind_y.pdf  used on input line 1
-53.
+78.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
 
-Overfull \vbox (6.95067pt too high) detected at line 153
- []
-
-[5
-
- <./continuous_sim_results_ind_y.pdf>]
-<continuous_sim_results_ind_delta.pdf, id=188, 497.86pt x 381.425pt>
-File: continuous_sim_results_ind_delta.pdf Graphic file (type pdf)
-<use continuous_sim_results_ind_delta.pdf>
-Package pdftex.def Info: continuous_sim_results_ind_delta.pdf  used on input li
-ne 157.
-(pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
-
-Overfull \vbox (6.95067pt too high) detected at line 157
+Overfull \vbox (6.95067pt too high) detected at line 178
  []
 
 [6
 
- <./continuous_sim_results_ind_delta.pdf>]
-<continuous_sim_results.pdf, id=224, 497.86pt x 381.425pt>
-File: continuous_sim_results.pdf Graphic file (type pdf)
-<use continuous_sim_results.pdf>
-Package pdftex.def Info: continuous_sim_results.pdf  used on input line 162.
+ <./continuous_sim_results_ind_y.pdf>]
+<continuous_sim_results_ind_delta.pdf, id=216, 497.86pt x 381.425pt>
+File: continuous_sim_results_ind_delta.pdf Graphic file (type pdf)
+<use continuous_sim_results_ind_delta.pdf>
+Package pdftex.def Info: continuous_sim_results_ind_delta.pdf  used on input li
+ne 182.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
 
-Overfull \vbox (6.95067pt too high) detected at line 162
+Overfull \vbox (6.95067pt too high) detected at line 182
  []
 
 [7
 
- <./continuous_sim_results.pdf>] [8
+ <./continuous_sim_results_ind_delta.pdf>]
+<continuous_sim_results.pdf, id=254, 497.86pt x 381.425pt>
+File: continuous_sim_results.pdf Graphic file (type pdf)
+<use continuous_sim_results.pdf>
+Package pdftex.def Info: continuous_sim_results.pdf  used on input line 187.
+(pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
 
-] [9
+Overfull \vbox (6.95067pt too high) detected at line 187
+ []
+
+[8
+
+ <./continuous_sim_results.pdf>] [9
 
 ] [10
 
+] [11
+
 ]
-<binary_sim_results.pdf, id=338, 662.475pt x 498.86375pt>
+<binary_sim_results.pdf, id=367, 662.475pt x 498.86375pt>
 File: binary_sim_results.pdf Graphic file (type pdf)
 <use binary_sim_results.pdf>
-Package pdftex.def Info: binary_sim_results.pdf  used on input line 212.
+Package pdftex.def Info: binary_sim_results.pdf  used on input line 237.
 (pdftex.def)             Requested size: 308.06367pt x 231.97685pt.
 
-Overfull \vbox (2.90627pt too high) detected at line 212
+Overfull \vbox (2.90627pt too high) detected at line 237
  []
 
-[11
+[12
 
  <./binary_sim_results.pdf>]
 \tf@nav=\write6
@@ -975,35 +977,37 @@ Overfull \vbox (2.90627pt too high) detected at line 212
 
  (./lrf_slides.aux)
 Package rerunfilecheck Info: File `lrf_slides.out' has not changed.
-(rerunfilecheck)             Checksum: FFA90AD42556B62BE49030D8AEEF5689;594.
+(rerunfilecheck)             Checksum: 120E61851F8E87713A0C3103029F9B68;585.
  ) 
 Here is how much of TeX's memory you used:
- 20383 strings out of 480450
- 384995 string characters out of 5896870
- 671159 words of memory out of 5000000
- 37645 multiletter control sequences out of 15000+600000
- 415316 words of font info for 71 fonts, out of 8000000 for 9000
+ 20401 strings out of 480450
+ 385423 string characters out of 5896870
+ 671160 words of memory out of 5000000
+ 37660 multiletter control sequences out of 15000+600000
+ 415622 words of font info for 72 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,15n,108p,414b,554s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,18n,108p,414b,554s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mex10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmmi10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi12.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmss10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss12.pfb></Users/000766412/Library/TinyTeX/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></Users/000766412/Library/Tiny
-TeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></Users/000766412/Lib
-rary/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></Users/0007
-66412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></Us
-ers/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy7.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msam10.pfb>
-Output written on lrf_slides.pdf (11 pages, 208742 bytes).
+pe1/public/amsfonts/cm/cmmi8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmss10.pfb></Users/000766412/Library/TinyTeX/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></Users/000766412/Library/Tiny
+TeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></Users/000766412/Libra
+ry/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></Users/00076641
+2/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></Users
+/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pf
+b></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mssi8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy7.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on lrf_slides.pdf (12 pages, 230421 bytes).
 PDF statistics:
- 436 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
- 28 named destinations out of 1000 (max. 500000)
+ 473 PDF objects out of 1000 (max. 8388607)
+ 408 compressed objects within 5 object streams
+ 30 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

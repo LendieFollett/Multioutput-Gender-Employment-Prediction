@@ -98,7 +98,7 @@ Y_i &\sim N(\mu_i, \sigma^2)\\
 \mu_i &= \sum_{t=1}^T \sum_{l \in L_t}\psi_{lt}I(x_i \leadsto (t,l))
 \end{align*}
 
-$I(x_i \leadsto (t,l)) = 1$ if $x_i$ falls into node ($t,l$) of tree $t$. 
+$I(x_i \leadsto (t,l)) = 1$ if $x_i$ falls into node ($t,l$) of tree $t$; 0 otherwise. 
 
 \end{frame}
 
@@ -113,7 +113,8 @@ $I(x_i \leadsto (t,l)) = 1$ if $x_i$ falls into node ($t,l$) of tree $t$.
 
 
 
-\section{Simulation Results} 
+\section{Simulation Study} 
+
 
 \subsection{Binary/Continuous} 
 
@@ -126,10 +127,34 @@ Y_i &\sim N(\mu_i, \sigma^2_i) \\
 \begin{itemize}
 \item $\begin{pmatrix}\mu_i \\ \pi_i \end{pmatrix}$ modeled jointly using a shared forest model
 
-$$\begin{pmatrix}\mu_i \\ \pi_i \end{pmatrix} = 
+$$\begin{pmatrix}\mu_i \\ \Phi(\pi_i) \end{pmatrix} = 
 \begin{pmatrix}\sum_{t=1}^T \sum_{l \in L_t}\psi_{lt}I(x_i \leadsto (t,l)) \\ \sum_{t=1}^T \sum_{l \in L_t}\theta_{lt}I(x_i \leadsto (t,l)) \end{pmatrix} $$
 \item Likelihood involves two dimensional response: $\{Y_i, \delta_i\}_{i = 1}^N$
 \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Simulation Study }{Setup}
+We run 100 simulations. In each:
+\begin{itemize}
+\item $n_{train} = 500$, $n_{test} = 500$
+\item We set the number of covariates to P = 150. 
+\item $x_1, \hdots, x_{150} \sim Unif(0,1)$
+\item True underlying means based on a modification of the ``Friedman function"
+\begin{align*}
+y_i &= 10 \sin (\pi x_{1i} x_{2i}) + 20(x_{3i} - 0.5)^2 + 10x_{4i} + 5x_{5i} +
+\epsilon_i^Y\\
+\delta_i &= \begin{cases}1 &\text{ if}5 \sin (\pi x_{1i} x_{2i}) + 25(x_{3i} - 0.5)^2 + 5x_{4i} + 10x_{5i} +
+\epsilon_i^{\delta} > 0 \\
+                          0 & \text{ otherwise}\end{cases}
+\end{align*}
+
+where $(\epsilon_i^Y, \epsilon_i^{\delta}) \overset{iid}{\sim} N(0,1)$
+
+\end{itemize}
+
+
+
 \end{frame}
 
 \begin{frame}{1 binary, 1 continuous }
