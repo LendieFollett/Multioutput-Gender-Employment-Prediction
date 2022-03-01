@@ -13,9 +13,10 @@ library(randomForest)
 library(reshape2)
 library(parallel)
 library(gridExtra)
+library(xtable)
 # Set file path
 #out = "/Users/hendersonhl/Documents/Articles/Multivariate-Heterogenous-Response-Prediction"
-out = "/Users/000766412/OneDrive - Drake University/Documents/GitHub/Multivariate-Heterogenous-Response-Prediction"
+out = "/Users/000766412/OneDrive - Drake University/Documents/GitHub/Multioutput-Gender-Employment-Prediction"
 # Set parameters
 
 
@@ -177,24 +178,25 @@ fitmatd_long1 <- fitmatd[,c(3,5,7)] %>% melt(id.vars = c(1))%>%
                            labels = c( "BART", "Shared Forest")))%>%
   rename(true_y = true_y_delta_1)
 
-p <- rbind(data.frame(fitmatd_long0, delta = 0),
-           data.frame(fitmatd_long1, delta = 1)) %>%
+p <- rbind(data.frame(fitmatd_long0, delta = "delta = 0"),
+           data.frame(fitmatd_long1, delta = "delta = 1")) %>%
   ggplot() +
   geom_density(aes(x = (value - true_y)^2, fill = variable, linetype = variable), alpha = I(.3)) +
-  facet_wrap(~delta, ncol = 1) +
+  facet_wrap(~delta, ncol = 1, scales = "free") +
   labs(x = "Squared Error") +
   scale_linetype("Model")+
-  scale_fill_manual("Model",values=c("grey10","grey40", "grey90")) + theme_bw()
+  scale_fill_manual("Model",values=c("grey10", "grey90")) + theme_bw()
 p
 
 ggsave(paste0(out, "/continuous_sim_results.pdf"), plot = p)
 
 rbind(data.frame(fitmatd_long0, delta = 0),
       data.frame(fitmatd_long1, delta = 1)) %>%
-  group_by(variable, delta)%>%
+  group_by(delta, variable)%>%
   summarise(MSE = mean((true_y - value)^2),
             L_bound = quantile((true_y - value)^2, .025),
-            U_bound = quantile((true_y - value)^2, 0.975))
+            U_bound = quantile((true_y - value)^2, 0.975)) %>%
+  xtable
 
 
 rbind(data.frame(fitmatd_long0, delta = 0),
@@ -204,19 +206,30 @@ rbind(data.frame(fitmatd_long0, delta = 0),
 
 
 # Predicting individual-level responses
-
-fitmatd[,c(1,10,11)] %>% melt(id.vars = c(1)) %>%
+# individual mean squared errors (not conditional on delta value)
+p1 <- fitmatd[,c(1,10,11)] %>% melt(id.vars = c(1)) %>%
   mutate(variable = factor(variable, levels = c("b_Y_pred_mse","sb_Y_pred_mse"),
                            labels = c( "BART", "Shared Forest"))) %>%
   ggplot() + 
-  geom_density(aes(x = value, fill = variable))
+  geom_density(aes(x = value, fill = variable, linetype = variable), alpha = I(.3))+
+  labs(x = "Mean Squared Error") +
+  scale_linetype("Model")+
+  scale_fill_manual("Model",values=c("grey10", "grey90")) + theme_bw()
+p1
+ggsave(paste0(out, "/continuous_sim_results_ind_y.pdf"), plot = p1)
 
-
-fitmatd[,c(1,8,9)] %>% melt(id.vars = c(1)) %>%
+# individual delta accuracy levels 
+p2 <- fitmatd[,c(1,8,9)] %>% melt(id.vars = c(1)) %>%
   mutate(variable = factor(variable, levels = c("b_delta_pred_acc","sb_delta_pred_acc"),
                            labels = c( "BART", "Shared Forest"))) %>%
   ggplot() + 
-  geom_density(aes(x = value, fill = variable))
+  geom_density(aes(x = value, fill = variable, linetype = variable), alpha = I(.3))+
+  labs(x = "Accuracy") +
+  scale_linetype("Model")+
+  scale_fill_manual("Model",values=c("grey10", "grey90")) + theme_bw()
+p2
+ggsave(paste0(out, "/continuous_sim_results_ind_delta.pdf"), plot = p2)
+
 
 ############################################
 p1 <-  ggplot() +
