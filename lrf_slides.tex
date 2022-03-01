@@ -83,13 +83,70 @@
 
 \section{Multi-Output Prediction Model}
 
-\begin{frame}{Shared Forest}
+\begin{frame}{Bayesian additive regression tree (BART)}
+\begin{itemize}
+\item Nonparametric prediction tool
+\item Ensemble of 'weak learners' that leads to robust out-of-sample predictions
+\item Dynamically learns important predictors via a sparsity inducing prior
+%\item Excels when $x$ is high in dimension, with relatively few important predictors
+\end{itemize}
+
+Mathematically, a BART model looks like:
+
+\begin{align*}
+Y_i &\sim N(\mu_i, \sigma^2)\\
+\mu_i &= \sum_{t=1}^T \sum_{l \in L_t}\psi_{lt}I(x_i \leadsto (t,l))
+\end{align*}
+
+$I(x_i \leadsto (t,l)) = 1$ if $x_i$ falls into node ($t,l$) of tree $t$. 
 
 \end{frame}
+
+\begin{frame}{Shared Forest}
+\begin{itemize}
+\item An extension of BART for multivariate responses
+\item Correlation between responses is utilized via shared tree structures
+\item Variables that predict $Y_1$ are likely the same variables that predict $Y_2$ (though the nature of the relationship may be different!)
+\item Information sharing $\Rightarrow$ better predictions for $Y_1$ \textit{and} $Y_2$ 
+\end{itemize}
+\end{frame}
+
+
 
 \section{Simulation Results} 
 
 \subsection{Binary/Continuous} 
+
+\begin{frame}{1 binary, 1 continuous }
+\begin{align}
+Y_i &\sim N(\mu_i, \sigma^2_i) \\
+\delta_i &\sim Bernoulli(\pi_i)
+\end{align}
+
+\begin{itemize}
+\item $\begin{pmatrix}\mu_i \\ \pi_i \end{pmatrix}$ modeled jointly using a shared forest model
+
+$$\begin{pmatrix}\mu_i \\ \pi_i \end{pmatrix} = 
+\begin{pmatrix}\sum_{t=1}^T \sum_{l \in L_t}\psi_{lt}I(x_i \leadsto (t,l)) \\ \sum_{t=1}^T \sum_{l \in L_t}\theta_{lt}I(x_i \leadsto (t,l)) \end{pmatrix} $$
+\item Likelihood involves two dimensional response: $\{Y_i, \delta_i\}_{i = 1}^N$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{1 binary, 1 continuous }
+Two quantities may be of interest for prediction
+\begin{enumerate}
+\item $E(\delta^*, y^* \mid x)$, where $^*$ indicates those observations come from a test / hold-out sample
+  \begin{itemize}
+    \item[ex)] Predict salary of individual, conditional on cellular traits $x_i$
+    \item[ex)] Predict gender of individual, conditional on cellular traits $x_i$
+  \end{itemize}
+\item $E(y^* \mid \delta)$
+  \begin{itemize}
+    \item[ex)] Predict mean salary of females (avg. across traits observed for females)
+  \end{itemize}
+\end{enumerate}
+\end{frame}
+
 
 \begin{frame}{Predicting Individual $Y^*$ }
 \includegraphics[width = .9\linewidth]{continuous_sim_results_ind_y.pdf}
@@ -112,7 +169,7 @@
 \centering
 \begin{tabular}{rlrrr}
   \hline
-delta & variable & MSE & L\_bound & U\_bound \\ 
+$\delta$ & Model & MSE & L\_bound & U\_bound \\ 
   \hline
 0 & BART & 0.004875 & 0.000004 & 0.023207 \\ 
   0 & Shared Forest & 0.004330 & 0.000007 & 0.017697 \\ 
@@ -127,8 +184,29 @@ delta & variable & MSE & L\_bound & U\_bound \\
 
 \subsection{Binary/Binary} 
 
+\begin{frame}{2 binary responses}
+The model structure is the same as described before; however, the likelihood reflects that:
+
+\begin{align}
+\delta_{1i} &\sim Bernoulli(\pi_{1i}) \\
+\delta_{2i} &\sim Bernoulli(\pi_{2i})
+\end{align}
+
+As before, the tree structures will be built using information shared between $\delta_1$ and $\delta_2$, while the location parameters are estimated separately. 
+
+\end{frame}
+
 \begin{frame}{Predicting $E(\delta_2^* \mid \delta_1^*)$ }
 \includegraphics[width = .9\linewidth]{binary_sim_results.pdf}
+\end{frame}
+
+\begin{frame}{2 binary responses}
+
+In this context, we are interested in predicting $P(\delta^*_2=1 \mid \delta^*_1)$.
+\begin{itemize}
+\item[ex)] Probability a randomly selected female is employed. \\($\delta_1$ = gender, $\delta_2$ = employment)
+\end{itemize}
+
 \end{frame}
 
 \end{document}
