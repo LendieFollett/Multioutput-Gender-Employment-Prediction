@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  1 MAR 2022 16:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.25)  2 MAR 2022 09:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -886,13 +886,13 @@ Dictionary: translator-numbers-dictionary, Language: English
 eorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./lrf_slides.nav)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+LaTeX Font Info:    Trying to load font information for U+msa on input line 105
 .
 
 (/Users/000766412/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+LaTeX Font Info:    Trying to load font information for U+msb on input line 105
 .
 
 (/Users/000766412/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -914,10 +914,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: continuous_sim_results_ind_y.pdf Graphic file (type pdf)
 <use continuous_sim_results_ind_y.pdf>
 Package pdftex.def Info: continuous_sim_results_ind_y.pdf  used on input line 1
-78.
+80.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
 
-Overfull \vbox (6.95067pt too high) detected at line 178
+Overfull \vbox (6.95067pt too high) detected at line 180
  []
 
 [6
@@ -927,10 +927,10 @@ Overfull \vbox (6.95067pt too high) detected at line 178
 File: continuous_sim_results_ind_delta.pdf Graphic file (type pdf)
 <use continuous_sim_results_ind_delta.pdf>
 Package pdftex.def Info: continuous_sim_results_ind_delta.pdf  used on input li
-ne 182.
+ne 184.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
 
-Overfull \vbox (6.95067pt too high) detected at line 182
+Overfull \vbox (6.95067pt too high) detected at line 184
  []
 
 [7
@@ -939,10 +939,10 @@ Overfull \vbox (6.95067pt too high) detected at line 182
 <continuous_sim_results.pdf, id=254, 497.86pt x 381.425pt>
 File: continuous_sim_results.pdf Graphic file (type pdf)
 <use continuous_sim_results.pdf>
-Package pdftex.def Info: continuous_sim_results.pdf  used on input line 187.
+Package pdftex.def Info: continuous_sim_results.pdf  used on input line 189.
 (pdftex.def)             Requested size: 308.06367pt x 236.02126pt.
 
-Overfull \vbox (6.95067pt too high) detected at line 187
+Overfull \vbox (6.95067pt too high) detected at line 189
  []
 
 [8
@@ -957,10 +957,10 @@ Overfull \vbox (6.95067pt too high) detected at line 187
 <binary_sim_results.pdf, id=367, 662.475pt x 498.86375pt>
 File: binary_sim_results.pdf Graphic file (type pdf)
 <use binary_sim_results.pdf>
-Package pdftex.def Info: binary_sim_results.pdf  used on input line 237.
+Package pdftex.def Info: binary_sim_results.pdf  used on input line 241.
 (pdftex.def)             Requested size: 308.06367pt x 231.97685pt.
 
-Overfull \vbox (2.90627pt too high) detected at line 237
+Overfull \vbox (2.90627pt too high) detected at line 241
  []
 
 [12
@@ -982,7 +982,7 @@ Package rerunfilecheck Info: File `lrf_slides.out' has not changed.
 Here is how much of TeX's memory you used:
  20401 strings out of 480450
  385423 string characters out of 5896870
- 671160 words of memory out of 5000000
+ 670160 words of memory out of 5000000
  37660 multiletter control sequences out of 15000+600000
  415622 words of font info for 72 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -1004,7 +1004,7 @@ nts/cm/cmsy10.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy7.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy8.pfb></Users/000766412/Library/TinyTeX/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on lrf_slides.pdf (12 pages, 230421 bytes).
+Output written on lrf_slides.pdf (12 pages, 230991 bytes).
 PDF statistics:
  473 PDF objects out of 1000 (max. 8388607)
  408 compressed objects within 5 object streams
