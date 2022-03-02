@@ -177,7 +177,7 @@ Two quantities may be of interest for prediction
     \item[ex)] Predict hours worked for individual, conditional on cellular traits $x_i$
     \item[ex)] Predict gender of individual, conditional on cellular traits $x_i$
   \end{itemize}
-\item $\frac{1}{\sum I(\delta_i = 1)}\sum_{i: \delta_i = 1}E(y_i^* \mid x_i)$
+\item $E(y^* \mid \delta = 1) = \frac{1}{\sum I(\delta_i = 1)}\sum_{i: \delta_i = 1}E(y_i^* \mid x_i)$
   \begin{itemize}
     \item[ex)] Predict mean hours worked for females (avg. across traits observed for females, i.e., $\delta = 1$)
     \item[ex)] Predict mean hours worked for males (avg. across traits observed for males, i.e., $\delta = 0$)
