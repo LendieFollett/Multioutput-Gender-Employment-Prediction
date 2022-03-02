@@ -81,9 +81,8 @@
 
 \begin{document}
 
-\section{Multi-Output Prediction Model}
 
-\begin{frame}{Multi-Output Prediction Model}{Bayesian additive regression tree (BART)}
+\begin{frame}{Single-Output Prediction Model}{Bayesian additive regression tree (BART)}
 \begin{itemize}
 \item Univariate, nonparametric prediction tool
 \item Sum of T 'weak learner' trees % that leads to robust out-of-sample predictions
@@ -108,7 +107,7 @@ Y_i &\sim N(\mu_i, \sigma^2)\\
 \begin{itemize}
 \item An extension of BART for multivariate responses
 \item Correlation between responses is utilized via shared tree structures
-\item Variables that predict $Y_1$ are likely the same variables that predict $Y_2$ (though the nature of the relationship may be different!)
+\item Assumption: variables that predict $Y_1$ are likely the same variables that predict $Y_2$ (though the nature of the relationship may be different!)
 \item Information sharing $\Rightarrow$ better predictions for $Y_1$ \textit{and} $Y_2$ 
 \item Can model binary and/or continuous outcomes
 \end{itemize}
@@ -117,24 +116,49 @@ Y_i &\sim N(\mu_i, \sigma^2)\\
 
 
 \begin{frame}{Multi-Output Prediction Model}{1 binary, 1 continuous }
-\begin{align}
+
+The shared forest package accomodates heterogeneous outcomes. 
+\begin{itemize}
+\item[ex)] $Y = $ hours worked, $\delta = $ gender
+\end{itemize}
+\begin{align*}
 Y_i &\sim N(\mu_i, \sigma^2_i) \\
 \delta_i &\sim Bernoulli(\pi_i)
-\end{align}
+\end{align*}
 
 \begin{itemize}
-\item $\begin{pmatrix}\mu_i \\ \pi_i \end{pmatrix}$ modeled jointly using a shared forest model
+\item $\begin{pmatrix}\mu_i & \pi_i \end{pmatrix}$ modeled jointly using a shared forest model
 
 $$\begin{pmatrix}\mu_i \\ \Phi^{-1}(\pi_i) \end{pmatrix} = 
 \begin{pmatrix}\sum_{t=1}^T g(x_i ; \tau_t, M^{\mu}_t)\\%\sum_{l \in L_t}\psi_{lt}I(x_i \leadsto (t,l)) \\ 
 \sum_{t=1}^T g(x_i ; \tau_t, M^{\theta}_t)%\sum_{l \in L_t}\theta_{lt}I(x_i \leadsto (t,l))
 \end{pmatrix} $$
-\item Likelihood involves two dimensional response: $\{Y_i, \delta_i\}_{i = 1}^N$
+
+\item $g()$ function which inputs $x$ and outputs prediction
+\item $\tau_t$: the $t^{th}$ tree structure in the forest (shared across responses)
+\item $M^{\mu}_t,M^{\theta}_t$: node parameters for $t^{th}$ tree
+
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}{Multi-Output Prediction Model}{1 binary, 1 continuous }
+\begin{itemize}
+\item ``Information sharing": likelihood for $\tau_t$ involves two dimensional response: $\{Y_i, \delta_i\}_{i = 1}^N$
+\item Algorithm's decisions about tree structure ($\tau_t$) considers what is beneficial to both $Y$ and $\delta$
+\item Predictions of $\delta$ are improved by utilizing information provided by $Y$, vice versa
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}{Multi-Output Prediction Model}{2 binary responses}
-The model structure is the same as described before; however, the likelihood reflects that:
+%The model structure is the same as described before; however, the likelihood reflects that:
+
+In our application, it's likely we will have two binary responses
+\begin{itemize}
+\item[ex)] $\delta_1$ = gender, $\delta_2$ = employed
+\end{itemize}
+
 
 \begin{align}
 \delta_{1i} &\sim Bernoulli(\pi_{1i}) \\

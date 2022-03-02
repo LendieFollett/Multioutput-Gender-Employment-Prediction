@@ -260,6 +260,12 @@ p2 <-  ggplot() +
 p3 <- grid.arrange(p1, p2, ncol  = 2)
 ggsave("continuous_sim_results_single_sim.pdf", plot = p3, width = 8, height = 5)
 
+s_hat <- sb$s %>%apply(2, mean)
+ggplot() + geom_bar(aes(x = 1:ncol(W), y = s_hat), stat = "identity") +
+  labs(x = "Variable", y = "Inclusion Probability (s-hat)") + 
+  scale_x_continuous(breaks = c(1:25), limits = c(0, 25))
+ggsave("continuous_sim_s_posterior.pdf", plot = p3, width = 8, height = 5)
+
 
 ggplot(data = ar[!ar$true_delta == ar$sb_delta_pred,]) +
   geom_density(aes(x = true_Y, fill = as.factor(true_delta)),alpha = I(.4)) +
