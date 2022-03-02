@@ -233,28 +233,32 @@ ggsave(paste0(out, "/continuous_sim_results_ind_delta.pdf"), plot = p2)
 
 ############################################
 p1 <-  ggplot() +
-  geom_point(aes(x = true_Y, y = sb_Y_pred),size = 3 ,data = ar[!ar$true_delta == ar$sb_delta_pred,])+
-  geom_point(aes(x = true_Y, y = sb_Y_pred,  colour = as.factor(sb_delta_pred)),data = ar)+
+  #geom_point(aes(x = true_Y, y = sb_Y_pred),size = 3 ,data = ar[!ar$true_delta == ar$sb_delta_pred,])+
+  geom_point(aes(x = true_Y, y = sb_Y_pred),alpha = I(.4),data = ar)+
   geom_abline(aes(intercept = 0, slope = 1)) +
-  geom_vline(aes(xintercept = c(mean(Y_test[delta_test == 0]),mean(Y_test[delta_test == 1])))) +
-  geom_hline(aes(yintercept = weighted.mean(sb_y_pred, w = 1-pnorm(sb$theta_hat_test %>% apply(2, mean))))) +
-  geom_hline(aes(yintercept = weighted.mean(sb_y_pred, w = pnorm(sb$theta_hat_test %>% apply(2, mean))))) +
-  scale_colour_brewer("SB delta pred", palette = "Dark2") +
-  geom_text(aes(x = 2, y = 2, label = paste0("Error = ", mean(!ar$true_delta == ar$sb_delta_pred))))
+  #geom_vline(aes(xintercept = c(mean(Y_test[delta_test == 0]),mean(Y_test[delta_test == 1])))) +
+  #geom_hline(aes(yintercept = weighted.mean(sb_y_pred, w = 1-pnorm(sb$theta_hat_test %>% apply(2, mean))))) +
+  #geom_hline(aes(yintercept = weighted.mean(sb_y_pred, w = pnorm(sb$theta_hat_test %>% apply(2, mean))))) +
+  scale_colour_brewer("SF delta pred", palette = "Dark2") +
+  labs(x = "True Y", y = "Shared Forest Predicted Y") +
+  theme_bw()#+
+  #geom_text(aes(x = 2, y = 2, label = paste0("Error = ", mean(!ar$true_delta == ar$sb_delta_pred))))
 p1
 
 p2 <-  ggplot() +
-  geom_point(aes(x = true_Y, y = b_Y_pred),size = 3 ,data = ar[!ar$true_delta == ar$sb_delta_pred,])+
-  geom_point(aes(x = true_Y, y = b_Y_pred, colour = as.factor(b_delta_pred)), data = ar)+
+  #geom_point(aes(x = true_Y, y = b_Y_pred),size = 3 ,data = ar[!ar$true_delta == ar$sb_delta_pred,])+
+  geom_point(aes(x = true_Y, y = b_Y_pred), data = ar, alpha = I(.4))+
   geom_abline(aes(intercept = 0, slope = 1)) +
-  geom_vline(aes(xintercept = c(mean(Y_test[delta_test == 0]),mean(Y_test[delta_test == 1])))) +
-  geom_hline(aes(yintercept = mean(b_y_pred_delta_0))) +
-  geom_hline(aes(yintercept = mean(b_y_pred_delta_1)))+
-  scale_colour_brewer("CB delta pred", palette = "Dark2")+
-  geom_text(aes(x = 2, y = 2, label = paste0("Error = ", mean(!ar$true_delta == ar$b_delta_pred))))
+  #geom_vline(aes(xintercept = c(mean(Y_test[delta_test == 0]),mean(Y_test[delta_test == 1])))) +
+  #geom_hline(aes(yintercept = mean(b_y_pred_delta_0))) +
+  #geom_hline(aes(yintercept = mean(b_y_pred_delta_1)))+
+  scale_colour_brewer("BART delta pred", palette = "Dark2")+
+  labs(x = "True Y", y = "(Chained) BART Predicted Y") +
+  theme_bw()#+
+  #geom_text(aes(x = 2, y = 2, label = paste0("Error = ", mean(!ar$true_delta == ar$b_delta_pred))))
 
-p3 <- grid.arrange(p1, p2)
-#ggsave("example_result.pdf", plot = p3, width = 8, height = 10)
+p3 <- grid.arrange(p1, p2, ncol  = 2)
+ggsave("continuous_sim_results_single_sim.pdf", plot = p3, width = 8, height = 5)
 
 
 ggplot(data = ar[!ar$true_delta == ar$sb_delta_pred,]) +
