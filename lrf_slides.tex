@@ -88,7 +88,7 @@
 \item Sum of T 'weak learner' trees % that leads to robust out-of-sample predictions
 \item Dynamically learns important predictors via a sparsity inducing prior
 %\item Excels when $x$ is high in dimension, with relatively few important predictors
-\end{itemize}
+
 
 Mathematically, a BART model looks like:
 
@@ -98,6 +98,10 @@ Y_i &\sim N(\mu_i, \sigma^2)\\
 \end{align*}
 
 
+\item $g()$ tree function which inputs $x$ and outputs prediction
+\item $\tau_t$: the $t^{th}$ tree structure in the forest 
+\item $M_t$: node parameters for $t^{th}$ tree
+\end{itemize}
 
 %$I(x_i \leadsto (t,l)) = 1$ if $x_i$ falls into node ($t,l$) of tree $t$; 0 otherwise. 
 
@@ -107,7 +111,7 @@ Y_i &\sim N(\mu_i, \sigma^2)\\
 \begin{itemize}
 \item An extension of BART for multivariate responses
 \item Correlation between responses is utilized via shared tree structures
-\item Assumption: variables that predict $Y_1$ are likely the same variables that predict $Y_2$ (though the nature of the relationship may be different!)
+\item Assumption: variables that predict $Y_1$ are the same variables that predict $Y_2$ (though the nature of the relationship may be different!)
 \item Information sharing $\Rightarrow$ better predictions for $Y_1$ \textit{and} $Y_2$ 
 \item Can model binary and/or continuous outcomes
 \end{itemize}
@@ -134,10 +138,7 @@ $$\begin{pmatrix}\mu_i \\ \Phi^{-1}(\pi_i) \end{pmatrix} =
 \sum_{t=1}^T g(x_i ; \tau_t, M^{\theta}_t)%\sum_{l \in L_t}\theta_{lt}I(x_i \leadsto (t,l))
 \end{pmatrix} $$
 
-\item $g()$ function which inputs $x$ and outputs prediction
-\item $\tau_t$: the $t^{th}$ tree structure in the forest (shared across responses)
-\item $M^{\mu}_t,M^{\theta}_t$: node parameters for $t^{th}$ tree
-
+where $\Phi^{-1}$ is the probit link function.
 \end{itemize}
 \end{frame}
 
@@ -154,7 +155,7 @@ $$\begin{pmatrix}\mu_i \\ \Phi^{-1}(\pi_i) \end{pmatrix} =
 \begin{frame}{Multi-Output Prediction Model}{2 binary responses}
 %The model structure is the same as described before; however, the likelihood reflects that:
 
-In our application, it's likely we will have two binary responses
+In our application, we may have two binary responses
 \begin{itemize}
 \item[ex)] $\delta_1$ = gender, $\delta_2$ = employed
 \end{itemize}
@@ -167,6 +168,12 @@ In our application, it's likely we will have two binary responses
 
 As before, the tree structures will be built using information shared between $\delta_1$ and $\delta_2$, while the location parameters are estimated separately. 
 
+$$\begin{pmatrix}\Phi^{-1}(\pi_{1i}) \\ \Phi^{-1}(\pi_{2i}) \end{pmatrix} = 
+\begin{pmatrix}\sum_{t=1}^T g(x_i ; \tau_t, M^{1}_t)\\%\sum_{l \in L_t}\psi_{lt}I(x_i \leadsto (t,l)) \\ 
+\sum_{t=1}^T g(x_i ; \tau_t, M^{2}_t)%\sum_{l \in L_t}\theta_{lt}I(x_i \leadsto (t,l))
+\end{pmatrix} $$
+
+
 \end{frame}
 
 
@@ -174,8 +181,8 @@ As before, the tree structures will be built using information shared between $\
 We run 100 simulations. In each:
 \begin{itemize}
 \item $n_{train} = 500$, $n_{test} = 500$
-\item We set the number of covariates to P = 150. 
-\item $x_1, \hdots, x_{150} \sim Unif(0,1)$
+%\item We set the number of covariates to P = 150. 
+\item Predictors: $x_1, \hdots, x_{150} \sim Unif(0,1)$
 \item True underlying means based on a modification of the ``Friedman function"
 \begin{align*}
 y_i &= 10 \sin (\pi x_{1i} x_{2i}) + 20(x_{3i} - 0.5)^2 + 10x_{4i} + 5x_{5i} +
@@ -196,7 +203,7 @@ where $(\epsilon_i^Y, \epsilon_i^{\delta}) \overset{iid}{\sim} N(0,1)$
 \begin{frame}{Simulation Study}{1 binary, 1 continuous }
 Two quantities may be of interest for prediction
 \begin{enumerate}
-\item $E( y^* \mid x)$,$E(\delta^* \mid x)$, where $^*$ indicates those observations come from a test / hold-out sample
+\item $E( y_i^* \mid x_i)$,$E(\delta_i^* \mid x_i)$, where $^*$ indicates those observations come from a test / hold-out sample
   \begin{itemize}
     \item[ex)] Predict hours worked for individual, conditional on cellular traits $x_i$
     \item[ex)] Predict gender of individual, conditional on cellular traits $x_i$
@@ -234,14 +241,14 @@ Two quantities may be of interest for prediction
 % Tue Mar  1 10:17:05 2022
 \begin{table}[ht]
 \centering
-\begin{tabular}{rlrrr}
+\begin{tabular}{rlr}
   \hline
-$\delta$ & Model & MSE & L\_bound & U\_bound \\ 
+$\delta$ & Model & MSE\\
   \hline
-0 & BART & 0.004875 & 0.000004 & 0.023207 \\ 
-  0 & Shared Forest & 0.004330 & 0.000007 & 0.017697 \\ 
-  1 & BART & 0.028464 & 0.000042 & 0.119264 \\ 
-  1 & Shared Forest & 0.010399 & 0.000011 & 0.041591 \\ 
+0 & BART & 0.004875  \\ 
+  0 & Shared Forest & 0.004330  \\ 
+  1 & BART & 0.028464  \\ 
+  1 & Shared Forest & 0.010399  \\ 
    \hline
 \end{tabular}
 \caption{\label{tab:mse} Mean of the squared errors (across simulations) comparing the true $E(Y^* \mid \delta^*)$ to the estimated $\hat{E}(Y^* \mid \hat{\delta})$.}
@@ -260,12 +267,33 @@ $\delta$ & Model & MSE & L\_bound & U\_bound \\
 \end{itemize}
 \item We measure model performance by looking at the squared errors comparing the true population (conditional) means to the estimated. 
 
-\item The simulation study is identical, but with two binary responses. Importantly, these resonses again have differing mean functions. 
+\item The simulation study is identical, but with two binary responses. Importantly, these responses again have differing mean functions. 
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Predicting $E(\delta_2^* \mid \delta_1^*)$ }
 \includegraphics[width = .9\linewidth]{binary_sim_results.pdf}
 \end{frame}
+
+\begin{frame}{Predicting $E(\delta_2^* \mid \delta_1^*)$ }
+% latex table generated in R 4.0.5 by xtable 1.8-4 package
+% Fri Mar  4 08:55:46 2022
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+  \hline
+Model & MSE & $\delta_1$ \\ 
+  \hline
+BART & 0.056580 & 0 \\ 
+  Random Forest & 0.071952 & 0 \\ 
+  Shared Forest & 0.003252 & 0 \\ 
+  BART & 0.008327 & 1 \\ 
+  Random Forest & 0.027744 & 1 \\ 
+  Shared Forest & 0.003514 & 1 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
 
 \end{document}

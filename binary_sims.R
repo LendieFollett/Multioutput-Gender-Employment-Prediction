@@ -172,16 +172,14 @@ write.csv(fitmatd, paste0(out, "/binary_sims.csv"), row.names=FALSE)
 
 # Read in results
 fitmatd <- read.csv(paste0(out, "/binary_sims.csv"))
+order <- c(2,1,3)
 fitmatd_long0 <- fitmatd[,c(1,3,5,7)] %>% melt(id.vars = c(1)) %>%
-  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_0","b_d2_pred_d1_0","sb_d2_pred_d1_0")[c(3,2,1)],
-                           labels = c("Random Forest", "BART", "Shared Forest")[c(3,2,1)]))
+  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_0","b_d2_pred_d1_0","sb_d2_pred_d1_0")[order],
+                           labels = c("Random Forest", "BART", "Shared Forest")[order]))
 
 fitmatd_long1 <- fitmatd[,c(2,4,6,8)] %>% melt(id.vars = c(1))%>%
-  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_1","b_d2_pred_d1_1","sb_d2_pred_d1_1")[c(3,2,1)],
-                           labels = c("Random Forest", "BART", "Shared Forest")[c(3,2,1)]))
-
-fitmatd_long0 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_0 - value)^2))
-fitmatd_long1 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_1 - value)^2))
+  mutate(variable = factor(variable, levels = c("rf_d2_pred_d1_1","b_d2_pred_d1_1","sb_d2_pred_d1_1")[order],
+                           labels = c("Random Forest", "BART", "Shared Forest")[order]))
 
 p0 <- fitmatd_long0 %>% ggplot() +
   geom_density(aes(x = (value - true_d2_d1_0)^2, fill = variable, linetype = variable), alpha = I(.3)) +
@@ -199,5 +197,9 @@ p1 <- fitmatd_long1 %>% ggplot() +
 p <- grid.arrange(p0, p1, nrow = 2)
 ggsave(paste0(out, "/binary_sim_results.pdf"), plot = p)
 
+
+rbind((fitmatd_long0 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_0 - value)^2)) %>% mutate(delta = 0)),
+(fitmatd_long1 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_1 - value)^2))) %>% mutate(delta = 1)) %>%
+xtable()  
 
 
