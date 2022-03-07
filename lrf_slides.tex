@@ -81,6 +81,63 @@
 
 \begin{document}
 
+% Objective
+\begin{frame}{Objective}
+\textbf{\emph{Develop a machine-learning algorithm that uses mobile phone data to estimate gendered 
+patterns and gaps in key labor market indicators in Ghana.}}
+\end{frame}
+
+% Labor Market Indicators
+\begin{frame}{Labor Market Indicators}
+\footnotesize
+\begin{center}
+\begin{tabular}{p{3.2cm} p{3.5cm} p{2.5cm}} 
+\hline
+Domain & Example Outcome & Outcome Type \\ \hline
+Work & Hours worked in last 7 days & Continuous \\ 
+Labor under-utilization & Under-employed in last 7 days & Binary \\ 
+Informal Work & Worked informally in last 7 days & Binary \\ 
+Commuting & Minutes spent during typical morning commute & Continuous \\ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+% Joint Prediction
+\begin{frame}{Joint Prediction}
+\begin{itemize}
+\item For each indicator, we want to estimate the expected value of the indicator for men and 
+women, or $E(y \mid \delta = 0)$ and $E(y \mid \delta = 1)$.
+\item Gender is unobserved, so we must jointly predict $y_i$ and $\delta_i$ for each person $i$.
+\item The previously-used procedure is as follows:
+\begin{enumerate}
+\item With the training data, estimate a model that predicts gender.
+\item With the training data, estimate two models that predict the indicator of interest, one model 
+for each gender.
+\item Apply the model from (1) to the test data and apply the models in (2) depending on the 
+predicted value from (1).
+\item Calculate gender-disaggregated labor market indicators.
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+% Limitations
+\begin{frame}{Limitations}
+\begin{enumerate}
+\item Theoretical justification
+% What is the rationale for the procedure? Why should we expect it to give good estimates?
+\item Sample splitting
+% The second stage splits the sample roughly in half, meaning each model is estimated with
+% limited information
+\item Error propagation
+% Any prediction errors from the first stage will get passed onto the second stage
+\item Correlated outcomes
+% The single-output approach neglect correlation between the outcomes (e.g., the first stage
+% completely ignores labor market indicators when estimating gender).
+\item Uncertainty intervals
+% The existing approach doesn't tell us anything about the uncertainty of the estimates.
+\end{enumerate}
+\end{frame}
+
 
 \begin{frame}{Single-Output Prediction Model}{Bayesian additive regression tree (BART)}
 \begin{itemize}
