@@ -200,6 +200,6 @@ ggsave(paste0(out, "/binary_sim_results.pdf"), plot = p)
 
 rbind((fitmatd_long0 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_0 - value)^2)) %>% mutate(delta = 0)),
 (fitmatd_long1 %>% group_by(variable) %>% summarise(mse = mean((true_d2_d1_1 - value)^2))) %>% mutate(delta = 1)) %>%
-xtable()  
+xtable(digits = 6) %>% print(include.rownames=FALSE) 
 
 
