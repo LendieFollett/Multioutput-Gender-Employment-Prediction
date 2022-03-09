@@ -85,7 +85,7 @@ delta2_test <- ifelse(d_test[,2] > 0,1,0)
 ## num_burn = number of iterations discarded as burn-in
 ## num_thin = thinning parameter 
 ## num_save = number of iterations to save after burn-in
-opts <- SharedForestBinary::Opts(num_burn = 500, num_thin = 1, num_save = 500, num_print = 1000)
+opts <- SharedForestBinary::Opts(num_burn = 5000, num_thin = 1, num_save = 5000, num_print = 1000)
 hypers <- SharedForestBinary::Hypers(W = W, #Training covariate matrix
                  delta1 = delta1, #first binary response vector
                  delta2 = delta2, #second binary response vector
@@ -100,19 +100,19 @@ sb <- SharedBartBinary(W = W, #Training covariate matrix
            opts_ = opts) #opts from above
 ```
 
-    ## Finishing warmup BLAH 0      
-    ## Finishing save 0     
+    ## Finishing warmup BLAH 0      Finishing warmup BLAH 1000      Finishing warmup BLAH 2000      Finishing warmup BLAH 3000      Finishing warmup BLAH 4000      
+    ## Finishing save 0     Finishing save 1000     Finishing save 2000     Finishing save 3000     Finishing save 4000     
     ## Number of leaves at final iterations:
-    ## 2 2 3 2 2 2 2 2 4 2 
-    ## 3 3 3 2 2 2 2 2 3 2 
-    ## 3 2 2 2 2 2 2 3 2 2 
-    ## 2 4 3 2 2 2 2 2 4 3 
-    ## 2 2 3 2 3 2 4 2 4 3 
-    ## 2 2 4 3 2 3 3 2 3 2 
-    ## 2 1 2 3 3 2 2 4 3 2 
-    ## 2 2 5 3 2 2 3 2 2 2 
-    ## 2 2 2 2 2 2 2 1 4 4 
-    ## 2 3 2 4 3 2 2 3 2 3
+    ## 5 2 3 2 2 3 2 4 2 4 
+    ## 2 1 2 2 2 2 3 2 4 2 
+    ## 2 3 2 2 2 2 3 2 4 2 
+    ## 2 2 2 2 2 2 2 2 2 3 
+    ## 3 2 2 3 2 3 2 2 2 2 
+    ## 4 4 2 2 3 2 2 2 2 2 
+    ## 2 2 4 2 3 1 2 2 2 2 
+    ## 2 3 2 2 2 1 3 2 3 2 
+    ## 2 1 2 4 2 2 2 2 3 2 
+    ## 2 3 4 2 2 3 2 2 3 2
 
 ### Predict on test data
 
@@ -189,7 +189,7 @@ delta_test <- ifelse(d_test[,2] > 0, 1, 0)
 
 ``` r
 # Set up for simulations
-opts <- Opts(num_burn = 500, num_thin = 1, num_save = 500, num_print = 1000)
+opts <- SharedForest::Opts(num_burn = 5000, num_thin = 1, num_save = 5000, num_print = 1000)
 
 # Shared forest model
 hypers <- SharedForest::Hypers(X = W, Y = Y, W = W, delta = delta, num_tree = 100)
@@ -203,19 +203,19 @@ sb  <- SharedBart(X = W, #Training covariate matrix for continuous response
                   hypers_ = hypers, opts_ = opts)
 ```
 
-    ## Finishing warmup 0       
-    ## Finishing save 0     
+    ## Finishing warmup 0       Finishing warmup 1000       Finishing warmup 2000       Finishing warmup 3000       Finishing warmup 4000       
+    ## Finishing save 0     Finishing save 1000     Finishing save 2000     Finishing save 3000     Finishing save 4000     
     ## Number of leaves at final iterations:
-    ## 4 3 3 1 2 2 2 3 2 2 
-    ## 3 3 1 2 2 4 2 3 2 2 
-    ## 3 3 2 5 2 2 3 2 4 2 
-    ## 2 2 2 2 2 2 2 2 3 2 
-    ## 2 2 3 2 2 2 3 2 2 2 
-    ## 2 3 2 2 2 3 3 2 5 3 
-    ## 3 2 3 5 3 3 4 3 2 2 
-    ## 3 2 2 5 2 2 2 2 2 2 
-    ## 2 3 3 2 2 4 3 2 2 2 
-    ## 2 3 2 2 2 2 2 2 3 2
+    ## 3 3 2 2 3 1 2 3 2 3 
+    ## 2 4 4 2 3 3 2 4 2 5 
+    ## 1 3 3 2 2 2 2 5 2 2 
+    ## 3 2 2 1 2 4 2 3 2 2 
+    ## 3 4 2 3 2 2 2 2 3 2 
+    ## 2 4 2 2 2 2 4 3 2 2 
+    ## 2 1 2 2 2 3 2 5 3 2 
+    ## 2 2 3 4 3 2 2 5 2 2 
+    ## 2 3 3 2 2 2 4 2 2 1 
+    ## 2 1 2 2 2 2 2 2 2 2
 
 ### Predict on test data
 

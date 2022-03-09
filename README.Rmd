@@ -92,7 +92,7 @@ delta2_test <- ifelse(d_test[,2] > 0,1,0)
 ## num_burn = number of iterations discarded as burn-in
 ## num_thin = thinning parameter 
 ## num_save = number of iterations to save after burn-in
-opts <- SharedForestBinary::Opts(num_burn = 500, num_thin = 1, num_save = 500, num_print = 1000)
+opts <- SharedForestBinary::Opts(num_burn = 5000, num_thin = 1, num_save = 5000, num_print = 1000)
 hypers <- SharedForestBinary::Hypers(W = W, #Training covariate matrix
                  delta1 = delta1, #first binary response vector
                  delta2 = delta2, #second binary response vector
@@ -181,7 +181,7 @@ delta_test <- ifelse(d_test[,2] > 0, 1, 0)
 
 ```{r}
 # Set up for simulations
-opts <- Opts(num_burn = 500, num_thin = 1, num_save = 500, num_print = 1000)
+opts <- SharedForest::Opts(num_burn = 5000, num_thin = 1, num_save = 5000, num_print = 1000)
 
 # Shared forest model
 hypers <- SharedForest::Hypers(X = W, Y = Y, W = W, delta = delta, num_tree = 100)
