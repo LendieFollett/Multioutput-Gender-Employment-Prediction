@@ -40,4 +40,4 @@
 \headcommand {\beamer@subsectionpages {1}{19}}
 \headcommand {\beamer@sectionpages {1}{19}}
 \headcommand {\beamer@documentpages {19}}
-\headcommand {\def \inserttotalframenumber {19}}
+\headcommand {\gdef \inserttotalframenumber {19}}

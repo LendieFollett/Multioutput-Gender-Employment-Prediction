@@ -143,7 +143,7 @@ predicted value from (1).
 \begin{itemize}
 \item Univariate, nonparametric prediction tool
 \item Sum of T 'weak learner' trees % that leads to robust out-of-sample predictions
-\item Dynamically learns important predictors via a sparsity inducing prior
+%\item Dynamically learns important predictors via a sparsity inducing prior
 %\item Excels when $x$ is high in dimension, with relatively few important predictors
 
 
@@ -200,13 +200,13 @@ where $\Phi^{-1}$ is the probit link function.
 \end{frame}
 
 
-\begin{frame}{Multi-Output Prediction Model}{1 binary, 1 continuous }
-\begin{itemize}
-\item ``Information sharing": likelihood for $\tau_t$ involves two dimensional response: $\{Y_i, \delta_i\}_{i = 1}^N$
-\item Algorithm's decisions about tree structure ($\tau_t$) considers what is beneficial to both $Y$ and $\delta$
-\item Predictions of $\delta$ are improved by utilizing information provided by $Y$, vice versa
-\end{itemize}
-\end{frame}
+%\begin{frame}{Multi-Output Prediction Model}{1 binary, 1 continuous }
+%\begin{itemize}
+%\item ``Information sharing": likelihood for $\tau_t$ involves two dimensional response: $\{Y_i, \delta_i\}_{i = 1}^N$
+%\item Algorithm's decisions about tree structure ($\tau_t$) considers what is beneficial to both $Y$ and $\delta$
+%\item Predictions of $\delta$ are improved by utilizing information provided by $Y$, vice versa
+%\end{itemize}
+%\end{frame}
 
 
 \begin{frame}{Multi-Output Prediction Model}{2 binary responses}
@@ -240,7 +240,7 @@ We run 100 simulations. In each:
 \item $n_{train} = 500$, $n_{test} = 500$
 %\item We set the number of covariates to P = 150. 
 \item Predictors: $x_1, \hdots, x_{150} \sim Unif(0,1)$
-\item True underlying means based on a modification of the ``Friedman function"
+%\item True underlying means based on a modification of the ``Friedman function"
 \begin{align*}
 y_i &= 10 \sin (\pi x_{1i} x_{2i}) + 20(x_{3i} - 0.5)^2 + 10x_{4i} + 5x_{5i} +
 \epsilon_i^Y\\
@@ -253,6 +253,7 @@ where $(\epsilon_i^Y, \epsilon_i^{\delta}) \overset{iid}{\sim} N(0,1)$
 
 \end{itemize}
 
+\noindent We treat BART, using previously proposed chained framework, as the baseline model and compare its performance to the shared forest. %therefore, removing any potential benefit of the BART algorithm
 
 
 \end{frame}
@@ -265,6 +266,7 @@ Two quantities may be of interest for prediction
     \item[ex)] Predict hours worked for individual, conditional on cellular traits $x_i$
     \item[ex)] Predict gender of individual, conditional on cellular traits $x_i$
   \end{itemize}
+  %aggregate individual predictions up to group-level conditional means
 \item $E(y^* \mid \delta = 1) = \frac{1}{\sum I(\delta_i = 1)}\sum_{i: \delta_i = 1}E(y_i^* \mid x_i)$
   \begin{itemize}
     \item[ex)] Predict mean hours worked for females (avg. across traits observed for females, i.e., $\delta = 1$)
@@ -275,43 +277,61 @@ Two quantities may be of interest for prediction
 
 
 \begin{frame}{Predicting Individual $Y^*$ }{One typical simulation}
-\includegraphics[width = .9\linewidth]{continuous_sim_results_single_sim.pdf}
+\begin{figure}
+\includegraphics[width = .7\linewidth]{continuous_sim_results_single_sim.pdf}
+\caption{Each point corresponds to an observation from the test set. }
+\end{figure}
 \end{frame}
 
 \begin{frame}{Predicting Individual $Y^*$ }
-\includegraphics[width = .9\linewidth]{continuous_sim_results_ind_y.pdf}
+\begin{figure}
+\includegraphics[width = .7\linewidth]{continuous_sim_results_ind_y.pdf}
+\caption{Distribution of individual-level MSE for both models across 100 simulations.  }
+\end{figure}
 \end{frame}
 
 
 \begin{frame}{Predicting Individual $\delta*$}
-\includegraphics[width = .9\linewidth]{continuous_sim_results_ind_delta.pdf}
+\begin{figure}
+\includegraphics[width = .7\linewidth]{continuous_sim_results_ind_delta.pdf}
+\caption{Distribution of accuracies (larger = better) for both models across 100 simulations.  }
+\end{figure}
 \end{frame}
 
 
 \begin{frame}{Predicting $E(Y^* \mid \delta^*)$ }
-\includegraphics[width = .9\linewidth]{continuous_sim_results.pdf}
+\begin{figure}
+\includegraphics[width = .7\linewidth]{continuous_sim_results.pdf}
+\caption{Distribution of squared errors between true group means and estimated, for both models, across 100 simulations. }
+\end{figure}
 \end{frame}
 
-\begin{frame}{Predicting $E(Y^* \mid \delta^*)$ }
+\begin{frame}
+\begin{center}
+Questions?
+\end{center}
+\end{frame}
 
-% latex table generated in R 4.0.5 by xtable 1.8-4 package
-% Tue Mar  1 10:17:05 2022
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlr}
-  \hline
-$\delta$ & Model & MSE\\
-  \hline
-0 & BART & 0.004875  \\ 
-  0 & Shared Forest & 0.004330  \\ 
-  1 & BART & 0.028464  \\ 
-  1 & Shared Forest & 0.010399  \\ 
+ \begin{frame}{Predicting $E(Y^* \mid \delta^*)$ }
+ 
+ % latex table generated in R 4.0.5 by xtable 1.8-4 package
+ % Tue Mar  1 10:17:05 2022
+ \begin{table}[ht]
+ \centering
+ \begin{tabular}{rlr}
    \hline
-\end{tabular}
-\caption{\label{tab:mse} Mean of the squared errors (across simulations) comparing the true $E(Y^* \mid \delta^*)$ to the estimated $\hat{E}(Y^* \mid \hat{\delta})$.}
-\end{table}
-
-\end{frame}
+ $\delta$ & Model & MSE\\
+   \hline
+ 0 & BART & 0.004875  \\ 
+   0 & Shared Forest & 0.004330  \\ 
+   1 & BART & 0.028464  \\ 
+   1 & Shared Forest & 0.010399  \\ 
+    \hline
+ \end{tabular}
+ \caption{\label{tab:mse} Mean of the squared errors (across simulations) comparing the true $E(Y^* \mid \delta^*)$ to the estimated $\hat{E}(Y^* \mid \hat{\delta})$.}
+ \end{table}
+ 
+ \end{frame}
 
 
 
