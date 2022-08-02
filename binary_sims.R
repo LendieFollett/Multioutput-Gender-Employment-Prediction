@@ -82,7 +82,7 @@ out <- list(sb$s, #variable importance
             sb$theta_hat_test2, #preds for outcome 2
             outcome1_name = delta1_test, #truth for outcome 1 (ordered same as preds, give name as in data)
             outcome2_name = delta2_test, #truth of outcome 2 
-            GLOBAL IDENTIFIER) #need to trace back to original data
+            id = GLOBAL IDENTIFIER) #need to trace back to original data
 
 saveRDS(out, "descriptive_title.rds")
 #save as RDS file where title includes response, k-fold number
