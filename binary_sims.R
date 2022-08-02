@@ -2,7 +2,7 @@
 
 #SharedForestBinary is a modification of the SharedForest package
 rm(list = ls())
-#library(devtools)
+library(devtools)
 #install_github("LendieFollett/Multivariate-Heterogenous-Response-Prediction/SharedForestBinary-master/SharedForestBinary")
 #or
 #install.packages("/Users/000766412/OneDrive - Drake University/Documents/GitHub/Multivariate-Heterogenous-Response-Prediction/SharedForestBinary-master/SharedForestBinary",
@@ -76,6 +76,16 @@ sb <- SharedBartBinary(W = W,
            hypers_ = hypers,
            opts_ = opts)
 
+
+out <- list(sb$s, #variable importance
+            sb$theta_hat_test1, #preds for outcome 1
+            sb$theta_hat_test2, #preds for outcome 2
+            delta1_test, #truth for outcome 1 (ordered same as preds)
+            delta2_test, #truth of outcome 2 
+            GLOBAL IDENTIFIER) #need to trace back to original data
+
+saveRDS(out, "descriptive_title.rds")
+#save as RDS file where title includes response, k-fold number
 
 #dirichlet probability posterior means - should pick out most important
 #s_hat <- sb$s %>%apply(2, mean)
